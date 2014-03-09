@@ -63,4 +63,19 @@ public class Marin implements Serializable {
 		return "Marin [id=" + id + ", nom=" + nom + ", prenom=" + prenom
 				+ ", age=" + age + "]";
 	}
+	 	
+
+	public List<Marin> selectAll() {
+
+		List<Marin> marins = getEntityManager().createQuery(
+
+				"select marin from Marin marin").getResultList();
+
+		return marin;
+
+	private MarinEJB mEJB = new MarinEJB();
+
+	private List<Marin> marins;
+
+ 	}
 }
