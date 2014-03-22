@@ -1,6 +1,7 @@
 package org.paumard.controler;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -18,6 +19,7 @@ public class MarinControler implements Serializable {
 	private transient MarinEJB marinEJB ;
 	
 	private Marin marin = new Marin() ;
+	private List< Marin> marins;
 
 	public void create() {
 		Long id = marinEJB.createMarin(marin) ;
@@ -49,8 +51,22 @@ public class MarinControler implements Serializable {
 		marins= marinEJB.deleteMarinByPrenom(marin);
 
 		System.out.println("Marin persisté : " + marin.getPrenom()) ;
+	}
+	
+		public void delete() {
 
 		
+		marinEJB.deleteMarin(marin);
+
+		System.out.println("Marin supprimé : " + marin.getNom()) ;
+
+	}
+
+	public void rechercherById() {
+
+		marinEJB.rechercheMarin(marin.getId());
+
+		System.out.println("Marin recherché : " + marin.getNom()) ;
 
 	}
 }
