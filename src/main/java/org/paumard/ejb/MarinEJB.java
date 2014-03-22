@@ -42,28 +42,27 @@ public class MarinEJB {
 			
 
 	}
-+	public void deleteMarin(Marin marin ){
+	public void deleteMarin(Marin marin ){
+		
 
-+		
+		Query q = em.createQuery("select Marin from Marin marin where marin.nom =" +"'" +marin.getNom()+"'" );
 
-+		Query q = em.createQuery("select Marin from Marin marin where marin.nom =" +"'" +marin.getNom()+"'" );
+		List<Marin> marins = q.getResultList() ;
 
-+		List<Marin> marins = q.getResultList() ;
+		for (Marin marin_sup : marins) {
 
-+		for (Marin marin_sup : marins) {
+		   em.remove(marin_sup);
 
-+		   em.remove(marin_sup);
+		}}
 
-+		}}
+	public void rechercheMarin(Long Id ){
 
-+	public void rechercheMarin(Long Id ){
+		Marin marin=new Marin();
 
-+		Marin marin=new Marin();
+		marin= em.find(Marin.class, Id);
 
-+		marin= em.find(Marin.class, Id);
+					
 
-+					
-
-+	}
+	}
 
 }
